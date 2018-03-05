@@ -49,8 +49,8 @@ PART = sam4sd32c
 
 # Application target name. Given with suffix .a for library and .elf for a
 # standalone application.
-TARGET_FLASH = getting-started-flash.elf
-TARGET_SRAM = getting-started-sram.elf
+TARGET_FLASH = sam4s_quad.elf
+TARGET_SRAM = sam4s_quad.elf
 
 # List of C source files.
 CSRCS = \
