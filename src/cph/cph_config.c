@@ -40,5 +40,5 @@ void config_init(void)
 	config.accel_calibrate = false;
 	config.imu_calibrate = true;
 	config.log_motor = false;
-	config.log_imu = false;
+	config.log_imu = true;
 }

@@ -50,8 +50,8 @@ void cli_read_device(void)
     uint8_t uc_char;
 	uint8_t uc_flag;
 
-	if (uart_is_rx_ready(CONSOLE_UART)) {
-		uc_flag = uart_read(CONSOLE_UART, &uc_char);
+	if (uart_is_rx_ready(UART1)) {
+		uc_flag = uart_read(UART1, &uc_char);
 		if (!uc_flag) {
 			cli_put_char(uc_char);
 		}

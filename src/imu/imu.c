@@ -92,15 +92,17 @@ void imu_tick(void)
 
 
     // TODO: Need to tune
-    // if (cph_get_millis() >= f_mag_timeout) {
-    //     f_mag_timeout = cph_get_millis() + MAG_READ_RATE;
+    if (cph_get_millis() >= f_mag_timeout) {
+        f_mag_timeout = cph_get_millis() + 100;
 
-    //     mpu_read_normalized_mag();
-        
-    //     mag_x = ((float) norm_mag.x_axis)*M_PI/180.0f;
-    //     mag_y = ((float) norm_mag.y_axis)*M_PI/180.0f;
-    //     mag_z = ((float) norm_mag.z_axis)*M_PI/180.0f;
-    // }
+        mpu_read_normalized_mag();
+
+        mag_x = norm_mag.x_axis;
+        mag_y = norm_mag.y_axis;
+        mag_z = norm_mag.z_axis;
+        // printf("x:y:z\t%f\t%f\t%f\r\n", norm_mag.x_axis, norm_mag.y_axis, norm_mag.z_axis);
+
+    }
 
 
 

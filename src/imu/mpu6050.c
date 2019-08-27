@@ -671,6 +671,8 @@ void mpu_read_mag(int16_t *x, int16_t *y, int16_t *z)
 
     // Enable magnetometer
     write_register8(MPU9150_RA_MAG_ADDRESS, MPU9150_RA_ZA_OFFS_H, 0x01);
+
+    
     delay_ms(TWI_WAIT_TIME);
 
     uint8_t i2c_buffer[6];
@@ -689,6 +691,14 @@ void mpu_read_raw_mag(void)
     raw_mag.x_axis = (float) mx;
     raw_mag.y_axis = (float) my;
     raw_mag.z_axis = (float) mz;
+
+    // float m1, m2, m3;
+    // m1  = mx * 10.0f/1229.0f/4096.0f + 18.0f;
+    // m2  = my * 10.0f/1229.0f/4096.0f + 70.0f;
+    // m3  = mz * 10.0f/1229.0f/4096.0f + 270.0f;
+
+    // printf("x:y:z\t%f\t%f\t%f\r\n", m1, m2, m3);
+
 }
 
 void mpu_read_normalized_mag(void)
@@ -700,9 +710,9 @@ void mpu_read_normalized_mag(void)
      * apply calibration offsets in mG that correspond to your environment and magnetometer
      */
 
-    norm_mag.x_axis = raw_mag.x_axis * 10/1229/4096 +18;
-    norm_mag.y_axis = raw_mag.y_axis * 10/1229/4096 +70;
-    norm_mag.z_axis = raw_mag.z_axis * 10/1229/4096 +270;    
+    norm_mag.x_axis = raw_mag.x_axis * 10.0f/1229.0f/4096.0f +18.0f;
+    norm_mag.y_axis = raw_mag.y_axis * 10.0f/1229.0f/4096.0f +70.0f;
+    norm_mag.z_axis = raw_mag.z_axis * 10.0f/1229.0f/4096.0f +270.0f;
 
 }
 

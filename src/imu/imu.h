@@ -25,6 +25,14 @@ typedef struct fp_vector
 } t_fp_vector;
 
 
+typedef struct int16_t_vector
+{
+    int16_t x_axis;
+    int16_t y_axis;
+    int16_t z_axis;
+} t_int16_t_vector;
+
+
 
 typedef struct ap_vectors
 {
